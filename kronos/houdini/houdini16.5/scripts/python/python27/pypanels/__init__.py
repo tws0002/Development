@@ -1,5 +1,3 @@
-try:
-    import Tools,AssetManeger10
+import Tools,AssetManeger10
 
-except:
-    pass
+
