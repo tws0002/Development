@@ -1,5 +1,6 @@
 import hou
 import sys
+import os
 import platform
 
 
@@ -13,7 +14,7 @@ LibraryPath = "/libs/python27"
 if OS == 'Linux':
 
    try:
-       LinPath = ("/ppi/Ldrv/Library/fx/work/mtsuzuki/kronos")
+       LinPath = os.getcwd()
        sys.path.append(LinPath + ScriptsPath)
        sys.path.append(LinPath + LibraryPath)
 
@@ -24,7 +25,7 @@ if OS == 'Linux':
 if OS == 'Windows':
 
    try:
-       WinPath = (r"L:/Library/fx/work/mtsuzuki/kronos")
+       WinPath = os.getcwd()
        sys.path.append(WinPath + ScriptsPath)
        sys.path.append(WinPath + LibraryPath)
 
