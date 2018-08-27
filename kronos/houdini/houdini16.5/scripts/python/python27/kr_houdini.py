@@ -83,7 +83,7 @@ def Assenble_bgeo():
         EventNode = hou.node(Post_Path)
         EventNode.parm("execute").pressButton()
 
-        del hou
+        
 
 
 
