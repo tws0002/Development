@@ -5,6 +5,7 @@ import os
 import platform
 import pypanels.Tools
 import kr_houdini
+import web
 
 from PySide2 import QtWidgets,QtGui,QtCore
 
@@ -97,6 +98,8 @@ class ManegerWindow(QtWidgets.QWidget):
         self.JumpButton_A.setStyleSheet("color: White ; font-size :14pt;")
         self.JumpButton_A.setSizePolicy(QtWidgets.QSizePolicy.Fixed,QtWidgets.QSizePolicy.Fixed)
 
+        self.JumpButton_A.clicked.connect(self.Project_url_Open)
+
         self.JumpButton_B =  QtWidgets.QPushButton("Shotgun        ",self)
         self.JumpButton_B.setIcon(QtGui.QPixmap(iconpath + '/' + 'Shotgun.png'))
         self.JumpButton_B.setIconSize(QtCore.QSize(30,30))
@@ -110,6 +113,8 @@ class ManegerWindow(QtWidgets.QWidget):
         #self.JumpButton_C.setFixedWidth(200)
         self.JumpButton_C.setStyleSheet("color: White ; font-size :14pt;")
         self.JumpButton_C.setSizePolicy(QtWidgets.QSizePolicy.Fixed,QtWidgets.QSizePolicy.Fixed)
+
+        self.JumpButton_C.clicked.connect(self.Help_url_Open)
 
         #bgeoAssemble
         self.AssembleLayout = QtWidgets.QVBoxLayout(self)
@@ -134,7 +139,8 @@ class ManegerWindow(QtWidgets.QWidget):
         self.infomation.isReadOnly()
         self.infomation.setFixedWidth(220)
         try:
-           self.infomation.setPlainText("__Hip infomation__\n"+ "~LatestSaveTime~\n" + str(info_dict["LatestSaveTime"]) +"\n\n:CurrentUser---" + str(info_dict[":currentUser"])
+           self.infomation.setPlainText("Houdini_Help\n:ID  houdini16user\n:Pass  sRkadN29CA\n\n"
+                                        +"__Hip infomation__\n"+ "~LatestSaveTime~\n" + str(info_dict["LatestSaveTime"]) +"\n\n:CurrentUser---" + str(info_dict[":currentUser"])
                                         + "\n:Platform---" + str(info_dict[":Platform"]) + "\n:Version---" + str(info_dict[":Version"])+"\n\n__EnviromentVariables__\n"
                                         +"\n:$HIPNAME---\n" +str(info_dict[":HipName"]) + "\n:$HIP---\n"+str(info_dict[":FilePath"])
                                         +"\n$JOB---\n" +str(info_dict[":JOB"]) )
@@ -234,5 +240,17 @@ class ManegerWindow(QtWidgets.QWidget):
     def Assemble(self):
         try:
             kr_houdini.Assenble_bgeo()
+        except:
+            pass
+
+    def Project_url_Open(self):
+        try:
+            web.kr_browser.OpenBrowser("https://sites.google.com/a/ppi.co.jp/project-pages/home/lvs")
+        except:
+            pass
+
+    def Help_url_Open(self):
+        try:
+            web.kr_browser.OpenBrowser("http://houdinifx.jp/aup/houdini16.0/")
         except:
             pass
